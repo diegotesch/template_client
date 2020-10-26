@@ -1,0 +1,67 @@
+<p-card [header]="titulo" styleClass="ui-card-shadow">
+  <form [formGroup]='resourceForm'>
+    <div class="ui-fluid p-formgrid p-grid">
+      <div class="ui-g">
+        <div class="ui-lg-8 ui-md-8 ui-sm-12">
+          <label>Nome:</label>
+          <input type="text" pInputText formControlName="nome">
+
+          <app-form-field-error [form-control]="resourceForm.get('nome')"></app-form-field-error>
+        </div>
+
+        <div class="ui-lg-4 ui-md-4 ui-sm-12">
+          <label>Link SGO:</label>
+          <input type="text" pInputText formControlName="link">
+
+          <app-form-field-error [form-control]="resourceForm.get('link')"></app-form-field-error>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-sm-6">
+          <label>Cliente:</label>
+          <p-dropdown [options]="clientes" formControlName="idCliente" placeholder="Selecione um Cliente"></p-dropdown>
+
+          <app-form-field-error [form-control]="resourceForm.get('idCliente')"></app-form-field-error>
+        </div>
+
+        <div class="ui-lg-6 ui-md-6 ui-sm-6">
+          <label>Líder:</label>
+          <p-dropdown [options]="lideres" formControlName="idLider" placeholder="Selecione um Líder"></p-dropdown>
+
+          <app-form-field-error [form-control]="resourceForm.get('idLider')"></app-form-field-error>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-lg-4 ui-md-4 ui-sm-12">
+          <label>Testador:</label>
+          <input type="text" pInputText formControlName="testador">
+
+          <app-form-field-error [form-control]="resourceForm.get('testador')"></app-form-field-error>
+        </div>
+        <div class="ui-lg-4 ui-md-4 ui-sm-12">
+          <label>Revisor:</label>
+          <input type="text" pInputText formControlName="revisor">
+
+          <app-form-field-error [form-control]="resourceForm.get('revisor')"></app-form-field-error>
+        </div>
+        <div class="ui-lg-4 ui-md-4 ui-sm-12">
+          <label>Gerente:</label>
+          <input type="text" pInputText formControlName="gerente">
+
+          <app-form-field-error [form-control]="resourceForm.get('gerente')"></app-form-field-error>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g text-right">
+      <div class="ui-lg-2 ui-md-3 ui-sm-6">
+        <button pButton type="button" icon="pi pi-save" iconPos="left" label="Salvar" [disabled]="submittingForm || resourceForm.invalid" (click)="submitForm()"></button>
+      </div>
+      <div class="ui-lg-2 ui-md-3 ui-sm-6">
+        <button pButton type="button" icon="pi pi-times" iconPos="left" label="Cancelar" routerLink="/projetos"></button>
+      </div>
+    </div>
+  </form>
+</p-card>

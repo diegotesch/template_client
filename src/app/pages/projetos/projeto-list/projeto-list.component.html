@@ -1,0 +1,36 @@
+<p-card header="Lista de Projetos" styleClass="ui-card-shadow">
+  <p-header>
+    <div class="ui-lg-2 ui-md-3 ui-sm-6 float-right">
+      <button pButton type="button" icon="pi pi-check" iconPos="left" label="Novo" routerLink="novo"></button>
+    </div>
+  </p-header>
+
+  <p-table [columns]="colunas" [value]="resources">
+    <ng-template tableStyleClass="lista" pTemplate="header" let-columns>
+      <tr>
+        <th [class.action]="col.header=='Ações'" *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-recurso>
+      <tr>
+        <td>{{ recurso.nome }}</td>
+        <td>{{ obterNomeCliente(recurso.idCliente) }}</td>
+        <td>
+          <a [routerLink]="recurso.id" pButton type="button" icon="ui-icon-create"></a>
+          <a (click)="deletarResource(recurso)" pButton type="button" icon="pi pi-times"></a>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="columns.length">
+          <div class="text-center">
+            <h3>Nenhum registro cadastrado!</h3>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

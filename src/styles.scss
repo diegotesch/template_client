@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+
+body .ui-widget-overlay {
+  background-color: transparent;
+  opacity: 1;
+}
+
+body .ui-table .ui-table-thead>tr>th,
+body .ui-table .ui-table-tfoot>tr>td {
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  height: 7vh !important;
+  color: #f7f7f7 !important;
+  background-color: #3e464c !important;
+  border: 1px solid #cacaca !important;
+}
+
+body .ui-message.ui-message-error {
+  background-color: #e62a10;
+  border-color: #e62a10;
+  color: #ffffff;
+  margin: 0.5vh 0;
+}
+
+.ui-message .ui-message-icon,
+.ui-message .ui-message-text {
+  vertical-align: middle;
+  margin: 0 0.5vw;
+}
+
+.action {
+  width: 10vw !important;
+}
+
+.actiondash,
+.reduzida {
+  width: 60px;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.text-right {
+  justify-content: flex-end;
+}
+
+.text-center {
+  justify-content: center;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+}
+
+button.float-right {
+  margin: 0.5em 1em !important;
+}
+
+.ui-dropdown {
+  width: 100% !important;
+  min-width: auto !important;
+}
+
+.calendarTable input {
+  background-image: none !important;
+  width: 100% !important;
+}
+
+.editableIcon {
+  width: 1.5em !important;
+  height: 2em !important;
+  margin: 0 0 0 -5px;
+}
+
+.dashboardFiltro label {
+  display: block !important;
+}
+
+.dashboardFiltro input,
+.filtro div.ui-multiselect {
+  width: 100% !important;
+}
+
+body .ui-paginator .ui-dropdown {
+  width: 50px !important;
+}
+
+.layout-container .topbar .logo {
+  display: inline-block;
+  vertical-align: middle;
+  width: 200px;
+  height: 50px;
+  background: url('assets/layout/images/basis.jpg') top left no-repeat;
+  background-size: 150px 50px;
+}

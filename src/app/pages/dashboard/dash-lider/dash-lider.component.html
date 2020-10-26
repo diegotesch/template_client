@@ -1,0 +1,86 @@
+<p-card header="DASHBOARD" styleClass="ui-card-shadow">
+
+  <div class="ui-lg-12 ui-md-12 ui sm-12" style="margin-bottom: 30px">
+    <p-multiSelect defaultLabel="Filtrar por líder" [options]="converterDropDown(listaLideres, 'nome', 'id')" [(ngModel)]="lideresSelecionados" (onChange)="filtrarPorLider(lista)"></p-multiSelect>
+  </div>
+
+  <p-table [columns]="colunas" [value]="listaFiltrada" [responsive]="true">
+    <ng-template tableStyleClass="lista" pTemplate="header" let-columns>
+      <tr>
+        <th [class.actiondash]="col.header=='Ações'" *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr>
+        <td *ngIf="rowData.rowspan" [rowSpan]="rowData.rowspan.size">
+          <a [routerLink]="['/projetos', rowData.projeto.id]">
+                {{rowData.cliente}} - {{rowData.projeto.nome}}
+            </a>
+        </td>
+
+        <td>
+          <a target="_blank" href="https://sgo.basis.com.br/browse/{{ rowData.nome }}">
+                {{ rowData.nome }}
+            </a>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-dropdown [options]="converterDropDown(situacoes, 'descricao', 'id')" [(ngModel)]="rowData.idSituacao"></p-dropdown>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ obterNomeSituacao(rowData.idSituacao) }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.pontosFuncao">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ rowData.pontosFuncao }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-calendar [(ngModel)]="rowData.dataProximaEntrega"></p-calendar>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ rowData.dataProximaEntrega | date:'dd/MM/yyyy' }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td>{{ checarPrazo(rowData) }}</td>
+        <td>{{ rowData.qtdDefeitosCliente || 0 }}</td>
+        <td>{{ rowData.qtdDefeitosInterno || 0 }}</td>
+        <td>{{ checarImpedimento(rowData) }}</td>
+        <td>{{ rowData.projeto.revisor }}</td>
+        <td>{{ rowData.projeto.gerente }}</td>
+        <td>{{ rowData.projeto.testador }}</td>
+        <td>
+          <a [routerLink]="['/os', rowData.id]" pButton icon="ui-icon-create"></a>
+        </td>
+
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td [attr.colspan]="columns.length">
+          <div class="text-center">
+            <h3>Nenhuma registro a ser exibido!</h3>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</p-card>

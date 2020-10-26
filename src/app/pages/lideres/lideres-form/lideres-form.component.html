@@ -1,0 +1,29 @@
+<p-card [header]="titulo" styleClass="ui-card-shadow">
+  <form [formGroup]='resourceForm'>
+    <div class="ui-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-6">
+        <label>Nome:</label>
+        <input type="text" pInputText formControlName="nome">
+
+        <app-form-field-error [form-control]="resourceForm.get('nome')"></app-form-field-error>
+      </div>
+
+      <div class="p-field p-col-12 p-md-6">
+        <label>Contato:</label>
+        <input type="text" pInputText formControlName="contato">
+
+        <app-form-field-error [form-control]="resourceForm.get('contato')"></app-form-field-error>
+      </div>
+
+    </div>
+
+    <div class="ui-g text-right">
+      <div class="ui-lg-2 ui-md-3 ui-sm-6">
+        <button pButton type="button" icon="pi pi-save" iconPos="left" label="Salvar" [disabled]="submittingForm || resourceForm.invalid" (click)="submitForm()"></button>
+      </div>
+      <div class="ui-lg-2 ui-md-3 ui-sm-6">
+        <button pButton type="button" icon="pi pi-times" iconPos="left" label="Cancelar" routerLink="/lideres"></button>
+      </div>
+    </div>
+  </form>
+</p-card>

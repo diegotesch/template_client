@@ -1,0 +1,9 @@
+body .ui-table .ui-table-thead>tr>th,
+body .ui-table .ui-table-tfoot>tr>td {
+  font-weight: 800;
+  font-size: 16px;
+  height: 7vh;
+  color: #f7f7f7;
+  background-color: #3e464c;
+  border: 1px solid #cacaca;
+}
